@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 100px;
+    }
+
+    button {
+      width: 200px;
+      height: 50px;
+      font-size: 18px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.2);
+      animation: slide 3s linear infinite;
+      z-index: 10;
+    }
+
+    @keyframes slide {
+      from {
+        left: -300px;
+      }
+      to {
+        left: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Animation Intercept Example</h2>
+
+  <div class="container">
+    <button id="submitBtn">Submit</button>
+    <div class="overlay"></div>
+  </div>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      document.body.insertAdjacentHTML(
+        'beforeend',
+        '<p id="success">Button clicked!</p>'
+      );
+    });
+  </script>
+</body>
+</html>
