@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Overlay Blocking Button</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,10 +16,11 @@
       height: 100px;
     }
 
-    button {
+    #submitBtn {
       width: 200px;
       height: 50px;
       font-size: 18px;
+      cursor: pointer;
     }
 
     .overlay {
@@ -25,23 +29,27 @@
       left: -300px;
       width: 300px;
       height: 100px;
-      background: rgba(0, 0, 0, 0.2);
-      animation: slide 3s linear infinite;
-      z-index: 10;
+      background: rgba(255, 0, 0, 0.4);
+      z-index: 100;
+
+      /* Animate in and stay there */
+      animation: coverButton 2s forwards;
     }
 
-    @keyframes slide {
+    @keyframes coverButton {
       from {
         left: -300px;
       }
+
       to {
-        left: 300px;
+        left: 0;
       }
     }
   </style>
 </head>
 <body>
-  <h2>Animation Intercept Example</h2>
+
+  <h2>Button Covered by Overlay</h2>
 
   <div class="container">
     <button id="submitBtn">Submit</button>
@@ -49,12 +57,12 @@
   </div>
 
   <script>
-    document.getElementById('submitBtn').addEventListener('click', () => {
-      document.body.insertAdjacentHTML(
-        'beforeend',
-        '<p id="success">Button clicked!</p>'
-      );
-    });
+    document
+      .getElementById('submitBtn')
+      .addEventListener('click', () => {
+        alert('Button clicked');
+      });
   </script>
+
 </body>
 </html>
